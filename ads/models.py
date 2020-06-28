@@ -27,7 +27,7 @@ class District(models.Model):
 class Ads(models.Model):
     deal_type = models.ForeignKey(
         'DealType',
-        verbose_name='Тип сделки',
+        verbose_name='Типы сделки',
         on_delete=models.CASCADE,
     )
     number_of_rooms = models.IntegerField('Количество комнат', default=1)
@@ -62,3 +62,5 @@ class Ads(models.Model):
     class Meta:
         verbose_name = 'Обявление'
         verbose_name_plural = 'Объявления'
+
+
