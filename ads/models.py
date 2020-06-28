@@ -25,6 +25,7 @@ class District(models.Model):
 
 
 class Ads(models.Model):
+    image = models.ImageField('Главная фотография', upload_to='apartments')
     deal_type = models.ForeignKey(
         'DealType',
         verbose_name='Типы сделки',
