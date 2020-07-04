@@ -1,4 +1,5 @@
 {% load static %}
+{% load ads_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,14 +9,14 @@
     <title>Ключ | Агенство недвижимости</title>
 </head>
 <body>
-    <header>
+<header>
     <div class="header">
         <div class="wrap">
             <div class="header-top">
                 <div class="logo">
                     <div class="logo__img">
                         <a href="#"><img src="{% static 'img/svg/logo.svg' %}" alt="логотип"></a>
-                        
+
                     </div>
                     <div class="logo__text">
                         <a href="#"><img src="{% static 'img/svg/logo_text.svg' %}" alt="Центр недвижимости"></a>
@@ -23,10 +24,10 @@
                 </div>
                 <div class="header-top-right">
                     <p class="header-top-right__phone-number"><a href="tel:+73919020202">+7 (3919) 02-02-02</a></p>
-                    <a class="header-top-right__button" href='#'>
-                        <div class="plus">+</div>
-                        <p class="text">Разместить объявление</p>
-                    </a>
+{#                    <a class="header-top-right__button" href='#'>#}
+{#                        <div class="plus">+</div>#}
+{#                        <p class="text">Разместить объявление</p>#}
+{#                    </a>#}
                     <div class="hamburger">
                         <div class="hamburger__line-one"></div>
                         <div class="hamburger__line-two"></div>
@@ -38,12 +39,12 @@
                 Приобрети уют в собственном доме
             </div>
             <div class="header-subtitle">Наслаждайтесь местом, в котором живете</div>
-            <div class="search">
+            <div class="search" style="display: none;">
                 <div class="search-options">
                     <div class="search-options__item ">
                         <div class="search-options__text first">
                             <p class="search-options__substing">Тип сделки</p>
-                            <p class="search-options__title">Покупка <i class="fas fa-chevron-down "></i> </p>
+                            <p class="search-options__title">Покупка <i class="fas fa-chevron-down "></i></p>
                         </div>
                         <div class="navbar-wrap">
                             <ul class="navbar">
@@ -110,26 +111,26 @@
                     <div class="advanced-search">
                         <div class="advanced-search__line advanced-search__line_margin">
                             <span>Тип недвижимости</span>
-                            <input type="radio" id="flat" name = "flat">
+                            <input type="radio" id="flat" name="flat">
                             <label for="flat">Квартира</label>
-                            <input type="radio" id="pension" name = "flat">
+                            <input type="radio" id="pension" name="flat">
                             <label for="pension">Пансионат</label>
-                            <input type="radio" id="room" name = "flat">
+                            <input type="radio" id="room" name="flat">
                             <label for="room">Комната</label>
-                            <input type="radio" id="small-family" name = "flat">
+                            <input type="radio" id="small-family" name="flat">
                             <label for="small-family">Малосемейка</label>
-                            <input type="radio" id="dormitory" name = "flat">
+                            <input type="radio" id="dormitory" name="flat">
                             <label for="dormitory">Общежитие</label>
                         </div>
                         <div class="advanced-search__line advanced-search__line_margin">
                             <span>Этажность</span>
                             <input type="number" min="1" placeholder="от" class='one'>
                             <input type="number" min="1" placeholder="до">
-                            <input type="radio" id="dormitory" name = "storey">
+                            <input type="radio" id="dormitory" name="storey">
                             <label for="dormitory">Все кроме первого</label>
-                            <input type="radio" id="dormitory" name = "storey">
+                            <input type="radio" id="dormitory" name="storey">
                             <label for="dormitory">Все кроме последнего</label>
-                            <input type="radio" id="dormitory" name = "storey">
+                            <input type="radio" id="dormitory" name="storey">
                             <label for="dormitory">Многоуровневая</label>
                         </div>
                         <div class="advanced-search__line">
@@ -137,14 +138,14 @@
                             <input type="number" min="1" placeholder="от" class='one'>
                             <input type="number" min="1" placeholder="до">
                             <span>Материал стен</span>
-                            <div class = 'select' data-close= "true">Выбрать
+                            <div class='select' data-close="true">Выбрать
                                 <div class="select__nav">
                                     <div class='select__option'>Text 1</div>
                                     <div class='select__option'>Text 2</div>
                                 </div>
                             </div>
                             <span>Отделка</span>
-                            <div class = 'select' data-close= "true">Выбрать
+                            <div class='select' data-close="true">Выбрать
                                 <div class="select__nav">
                                     <div class='select__option'>Text 3</div>
                                 </div>
@@ -152,17 +153,18 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="advanced-search-btn">
-                   Расширенный поиск <span class = "arrow-down"></span> <span class = "arrow-up"></span>
+
+                <div class="advanced-search-btn" style="display: none;">
+                    Расширенный поиск <span class="arrow-down"></span> <span class="arrow-up"></span>
                 </div>
             </div>
-            
+            {% get_filters %}
+
 
         </div>
     </div>
 </header>
-    <div class="best-offer">
+<div class="best-offer">
     <div class="wrap">
         <div class="top">
             <h1 class="title">Лучшие предложения дня</h1>
@@ -174,43 +176,44 @@
         </div>
         <div class="slider">
             {% for item in ads %}
-                            <div class="slider__block slider__block_width">
-                <div class="slider__img">
-                    <img src="{% static 'img/Rectangle.png' %}" alt="">
-                    <div class="heart">
-                        <svg width="26" height="23" viewBox="0 0 26 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M24.4257 10.1474C23.1624 13.4679 16.0784 20.0844 13.0028 22C9.92722 20.0844 2.83736 13.4679 1.57406 10.1474C0.499661 7.31961 0.818438 3.48227 3.51624 1.92544C8.88233 -1.16997 13.0028 4.49178 13.0028 4.49178C13.0028 4.49178 17.1174 -1.16997 22.4894 1.92544C25.1813 3.48227 25.5001 7.31961 24.4257 10.1474Z"
-                                stroke="white" stroke-miterlimit="10" />
-                        </svg>
-                    </div>
-                </div>
-                <div class="information-block">
-                    <div class="information-block__top">
-                        <div class = "information-block__flat">{{ item.number_of_rooms }}-комн. квартира</div>
-                        <div class = 'area'>{{ item.apartment_area }} <span class="square">м<span>2</span></span> </div>
-                        <div>{{ item.apartment_floor }}/{{ item.house_floor }} эт</div>
-                    </div>
-                    <div class="substring">{{ item.district }}</div>
-                    <div class="street-name">{{ item.address }}</div>
-                    <div class="substring">{{ item.price_sm }} &#8381; / <span class="square">м<span>2</span></span></div>
-                    <div class="price">{{ item.price }} &#8381; <span class='old-price'>1 200 000 &#8381;</span></div>
-                    <div class="phone-number">
-                        <div class="phone-number__block">
-                            <p class='visible'>Показать телефон</p>
-                            <p class="hidden"> <a href="tel: +79999997788">{{ item.phone }}</a>  </p>
+                <div class="slider__block slider__block_width">
+                    <div class="slider__img">
+                        <img src="{{ item.image.url }}" alt="" width="360" height="220">
+                        <div class="heart">
+
                         </div>
-                        <a href="tel: +79999997788"> <div class="phone-number__icon">
-                             <img src="{% static 'img/svg/phone.svg' %}" alt="phone">
-                        </div> </a>
+                    </div>
+                    <div class="information-block">
+                        <div class="information-block__top">
+                            <div class="information-block__flat">{{ item.number_of_rooms }}-комн. квартира</div>
+                            <div class='area'>{{ item.apartment_area }} <span class="square">м<span>2</span></span>
+                            </div>
+                            <div>{{ item.apartment_floor }}/{{ item.house_floor }} эт</div>
+                        </div>
+                        <div class="substring">{{ item.district }}</div>
+                        <div class="street-name">{{ item.address }}</div>
+                        <div class="substring">{{ item.price_sm }} &#8381; / <span class="square">м<span>2</span></span>
+                        </div>
+                        <div class="price">{{ item.price }} &#8381; <span class='old-price'>1 200 000 &#8381;</span>
+                        </div>
+                        <div class="phone-number">
+                            <div class="phone-number__block">
+                                <p class='visible'>Показать телефон</p>
+                                <p class="hidden"><a href="tel: {{ item.phone }}">{{ item.phone }}</a></p>
+                            </div>
+                            <a href="tel: {{ item.phone }}">
+                                <div class="phone-number__icon">
+                                    <img src="{% static 'img/svg/phone.svg' %}" alt="phone">
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
             {% endfor %}
         </div>
     </div>
 </div>
-    <div class="advantages">
+<div class="advantages">
     <div class="wrap">
         <div class="text-title">
             Почему с нами лучше?
@@ -218,7 +221,7 @@
         <div class="all-advantages">
             <div class="all-advantages__block">
                 <div class="all-advantages__img">
-                    <img src="img/adv-01.png" alt="img">
+                    <img src="{% static 'img/adv-01.png' %}" alt="img">
                 </div>
                 <div class="all-advantages__subtitle">
                     У вас большой выбор
@@ -229,7 +232,7 @@
             </div>
             <div class="all-advantages__block">
                 <div class="all-advantages__img">
-                    <img src="img/adv-02.png" alt="img">
+                    <img src="{% static 'img/adv-02.png' %}" alt="img">
                 </div>
                 <div class="all-advantages__subtitle">
                     Сделка будет безопасной
@@ -240,7 +243,7 @@
             </div>
             <div class="all-advantages__block">
                 <div class="all-advantages__img">
-                    <img src="img/adv-03.png" alt="img">
+                    <img src="{% static 'img/adv-03.png' %}" alt="img">
                 </div>
                 <div class="all-advantages__subtitle">
                     Платите за результат
@@ -251,7 +254,7 @@
             </div>
             <div class="all-advantages__block">
                 <div class="all-advantages__img">
-                    <img src="img/adv-04.png" alt="img">
+                    <img src="{% static 'img/adv-04.png' %}" alt="img">
                 </div>
                 <div class="all-advantages__subtitle">
                     Все будет готово для сделки
@@ -263,7 +266,7 @@
         </div>
     </div>
 </div>
-    <div class="consultation">
+<div class="consultation">
     <div class="wrap">
         <div class="text-title">
             Бесплатная консультация
@@ -273,7 +276,7 @@
             <a href="tel: +73919020202" class="consultation__phone">+7 (3919) 02-02-02</a>
             <i class="fab fa-whatsapp"></i>
         </div>
-        <form action="" class = 'request'>
+        <form action="" class='request'>
             <fieldset class='request__fieldset'>
                 <legend class='request__legend'>Имя</legend>
                 <input type="text" placeholder="Введите имя" class="request__input">
@@ -289,11 +292,13 @@
         </form>
     </div>
 </div>
-    <div class="map">
+<div class="map">
     <div class="wrap">
         <div class="text">
             <div class="text-title">Узнайте, какую сумму вы сможете взять в ипотеку</div>
-            <div class="substring">Поможем получить одобрение банков, чтобы вы могли понимать бюджет на покупку квартиры</div>
+            <div class="substring">Поможем получить одобрение банков, чтобы вы могли понимать бюджет на покупку
+                квартиры
+            </div>
             <div class="btn">Подать заявку онлайн</div>
         </div>
         <ul class="steps">
@@ -331,11 +336,11 @@
 
     </div>
 </div>
-    <footer>
+<footer>
     <div class="wrap">
         <div class="footer footer_margin">
             <div class="footer__img">
-                <img src="img/svg/logo2.svg" alt="logo">
+                <img src="{% static 'img/svg/logo2.svg' %}" alt="logo">
             </div>
             <div class="footer__adress">
                 <p>г. Норильск, ул. Пушкина, д. 52</p>
@@ -347,12 +352,12 @@
             </div>
             <div class="footer__made-in">
                 Сделано
-                <img src="img/svg/copyright.svg" alt="logo">
+                <img src="{% static 'img/svg/copyright.svg' %}" alt="logo">
             </div>
         </div>
     </div>
 </footer>
-    <script src='{% static 'js/libs.min.js' %}'></script>
-    <script src="{% static 'js/script.min.js' %}"></script>
+<script src="{% static 'js/libs.min.js' %}"></script>
+<script src="{% static 'js/script.min.js' %}"></script>
 </body>
 </html>

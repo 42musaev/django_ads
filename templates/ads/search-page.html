@@ -1,0 +1,229 @@
+{% load static %}
+{% load ads_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+    <title>Ключ | Агенство недвижимости</title>
+</head>
+<body>
+<div class="header-two">
+    <div class="wrap">
+        <div class="header-top">
+            <div class="logo">
+                <div class="logo__img">
+                    <a href="index.html"><img src="{% static 'img/svg/logo.svg' %}" alt="логотип"></a>
+                </div>
+                <div class="logo__text">
+                    <a href="index.html"><img src="{% static 'img/svg/logo_text.svg' %}" alt="Центр недвижимости"></a>
+
+                </div>
+            </div>
+            <div class="header-top-right">
+                <p class="header-top-right__phone-number"><a href="tel:+73919020202">+7 (3919) 02-02-02</a></p>
+                <a class="header-top-right__button" href='#'>
+                    <div class="plus">+</div>
+                    <p class="text">Разместить объявление</p>
+                </a>
+                <div class="hamburger">
+                    <div class="hamburger__line-one"></div>
+                    <div class="hamburger__line-two"></div>
+                    <div class="hamburger__line-three"></div>
+                </div>
+            </div>
+        </div>
+        <div class="header-title header-title_top-87">
+            Приобрети уют в собственном доме
+        </div>
+        <div class="header-subtitle">Наслаждайтесь местом, в котором живете</div>
+        <div class="search">
+            <div class="search-options" style="display:none;">
+                <div class="search-options__item ">
+                    <div class="search-options__text first">
+                        <p class="search-options__substing">Тип сделки</p>
+                        <p class="search-options__title">Покупка <i class="fas fa-chevron-down "></i></p>
+                    </div>
+                    <div class="navbar-wrap">
+                        <ul class="navbar">
+                            <li class="navbar__item"><a href="#"> Покупка </a></li>
+                            <li class="navbar__item"><a href="#"> Продажа </a></li>
+                            <li class="navbar__item"><a href="#"> Аренда </a></li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="search-options__item">
+                    <div class="search-options__text">
+                        <p class="search-options__substing">Тип жилья</p>
+                        <p class="search-options__title">Квартира <i class="fas fa-chevron-down"></i></p>
+                    </div>
+                    <div class="navbar-wrap">
+                        <ul class="navbar">
+                            <li class="navbar__item"><a href="#"> Квартира </a></li>
+                            <li class="navbar__item"><a href="#"> Пансионат </a></li>
+                            <li class="navbar__item"><a href="#"> Комната </a></li>
+                            <li class="navbar__item"><a href="#"> Малосемейка </a></li>
+                            <li class="navbar__item"><a href="#"> Общежитие </a></li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="search-options__item">
+                    <div class="search-options__text">
+                        <p class="search-options__substing">Тип недвижимости</p>
+                        <p class="search-options__title">Вторичная <i class="fas fa-chevron-down"></i></p>
+                    </div>
+                    <div class="navbar-wrap">
+                        <ul class="navbar">
+                            <li class="navbar__item"><a href="#"> Вторичная </a></li>
+                            <li class="navbar__item"><a href="#"> Гараж </a></li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="search-options__item">
+                    <div class="search-options__text">
+                        <p class="search-options__substing">Площадь</p>
+                        <p class="search-options__title">30 м<span>2</span> &nbsp;—&nbsp; 60 м<span>2</span></p>
+                    </div>
+                </div>
+                <div class="search-options__item">
+                    <div class="search-options__text">
+                        <p class="search-options__substing">Отделка</p>
+                        <p class="search-options__title">Чистовая <i class="fas fa-chevron-down"></i></p>
+                    </div>
+                    <div class="navbar-wrap">
+                        <ul class="navbar">
+                            <li class="navbar__item"><a href="#"> Чистовая </a></li>
+                            <li class="navbar__item"><a href="#"> Черновая </a></li>
+                        </ul>
+                    </div>
+
+                </div>
+                <a class="search-options__btn" href='search-page.html'>
+                    Поиск
+                </a>
+            </div>
+            <div class="advanced-search-wrap">
+                <div class="advanced-search">
+                    <div class="advanced-search__line advanced-search__line_margin">
+                        <span>Тип недвижимости</span>
+                        <input type="radio" id="flat" name="flat">
+                        <label for="flat">Квартира</label>
+                        <input type="radio" id="pension" name="flat">
+                        <label for="pension">Пансионат</label>
+                        <input type="radio" id="room" name="flat">
+                        <label for="room">Комната</label>
+                        <input type="radio" id="small-family" name="flat">
+                        <label for="small-family">Малосемейка</label>
+                        <input type="radio" id="dormitory" name="flat">
+                        <label for="dormitory">Общежитие</label>
+                    </div>
+                    <div class="advanced-search__line advanced-search__line_margin">
+                        <span>Этажность</span>
+                        <input type="number" min="1" placeholder="от" class='one'>
+                        <input type="number" min="1" placeholder="до">
+                        <input type="radio" id="dormitory" name="storey">
+                        <label for="dormitory">Все кроме первого</label>
+                        <input type="radio" id="dormitory" name="storey">
+                        <label for="dormitory">Все кроме последнего</label>
+                        <input type="radio" id="dormitory" name="storey">
+                        <label for="dormitory">Многоуровневая</label>
+                    </div>
+                    <div class="advanced-search__line">
+                        <span>Площадь кухни</span>
+                        <input type="number" min="1" placeholder="от" class='one'>
+                        <input type="number" min="1" placeholder="до">
+                        <span>Материал стен</span>
+                        <div class='select' data-close="true">Выбрать
+                            <div class="select__nav">
+                                <div class='select__option'>Text 1</div>
+                                <div class='select__option'>Text 2</div>
+                            </div>
+                        </div>
+                        <span>Отделка</span>
+                        <div class='select' data-close="true">Выбрать
+                            <div class="select__nav">
+                                <div class='select__option'>Text 3</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="advanced-search-btn" style="display: none">
+                Расширенный поиск <span class="arrow-down"></span> <span class="arrow-up"></span>
+            </div>
+            {% get_filters %}
+
+        </div>
+
+    </div>
+</div>
+<div class="advertisement">
+    <div class="wrap">
+        <div class="main">
+            <div class="map-google">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5629.219439100738!2d88.19969096908977!3d69.34597927836262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x44ac5c1f8bc13abb%3A0x3b52b19813040661!2z0JzRg9C30LXQuSDQndC-0YDQuNC70YzRgdC60LA!5e0!3m2!1sru!2sru!4v1593016836029!5m2!1sru!2sru"
+                        height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+                        tabindex="0"></iframe>
+            </div>
+            {% for item in ads %}
+                <div class="advertisement__block">
+                    <div class="advertisement__img">
+                        <img src="{{ item.image.url }}" alt="image" width="264px" height="161">
+                    </div>
+                    <div class="information-block">
+                        <div class="information-block__top">
+                            <div class="information-block__flat">{{ item.number_of_rooms }}-комн. квартира</div>
+                            <div class='area'><span class="square">м<span>2</span></span></div>
+                            <div>5/5 эт</div>
+                        </div>
+                        <div class="substring">Центральный район</div>
+                        <div class="street-name">ул. Лауреатов, д. 43</div>
+                        <div class="substring">27 094 &#8381; / <span class="square">м<span>2</span></span></div>
+                        <div class="price">1 000 000 &#8381;</div>
+                        <div class="phone-number">
+                            <div class="phone-number__block">
+                                <p class='visible'>Показать телефон</p>
+                                <p class="hidden"><a href="tel: +79999997788">+7 (999) 999 77 88</a></p>
+                            </div>
+                            <a href="tel: +79999997788">
+                                <div class="phone-number__icon">
+                                    <img src="{% static 'img/svg/phone.svg' %}" alt="phone">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="wrap">
+        <div class="footer footer_margin-search-page">
+            <div class="footer__img">
+                <img src="{% static 'img/svg/logo2.svg' %}" alt="logo">
+            </div>
+            <div class="footer__adress">
+                <p>г. Норильск, ул. Пушкина, д. 52</p>
+                <a href="tel:+73919020202">+7 (3919) 02-02-02</a>
+            </div>
+            <div class="footer__root">
+                <p>Политика конфиденциальности</p>
+                <p>Условия обработки персональных данных</p>
+            </div>
+            <div class="footer__made-in">
+                Сделано
+                <img src="{% static 'img/svg/copyright.svg' %}" alt="logo">
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="{% static 'js/libs.min.js' %}"></script>
+<script src="{% static 'js/script.min.js' %}"></script>
+</body>
+</html>

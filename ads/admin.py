@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Ads, District, DealType
+from .models import Ads, District, DealType, HousingType, ProperType, Finishing
 
 
 @admin.register(Ads)
@@ -16,5 +16,23 @@ class DistrictAdmin(admin.ModelAdmin):
 
 @admin.register(DealType)
 class DealTypeAdmin(admin.ModelAdmin):
+    list_display = ['name']
+    list_display_links = ['name']
+
+
+@admin.register(HousingType)
+class HousingTypeAdmin(admin.ModelAdmin):
+    list_display = ['name']
+    list_display_links = ['name']
+
+
+@admin.register(ProperType)
+class ProperTypeAdmin(admin.ModelAdmin):
+    list_display = ['name']
+    list_display_links = ['name']
+
+
+@admin.register(Finishing)
+class FinishingAdmin(admin.ModelAdmin):
     list_display = ['name']
     list_display_links = ['name']

@@ -1,0 +1,27 @@
+<form class="search" action="{% url 'search' %}">
+    <p>Тип сделки</p>
+    <select name="deal_type">
+        {% for item in deal_type %}
+            <option value="{{ item.name }}">{{ item.name }}</option>
+        {% endfor %}
+    </select>
+    <p>Тип жилья</p>
+    <select name="housing_type">
+        {% for item in housing_type %}
+            <option value="{{ item.name }}">{{ item.name }}</option>
+        {% endfor %}
+    </select>
+    <p>Тип недвижимости</p>
+    <select name="proper_type">
+        {% for item in proper_type %}
+            <option value="{{ item.name }}">{{ item.name }}</option>
+        {% endfor %}
+    </select>
+    <p>Отделка</p>
+    <select name="finishing">
+        {% for item in finishing %}
+            <option value="{{ item.name }}">{{ item.name }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit">
+</form>
