@@ -23,10 +23,10 @@
             </div>
             <div class="header-top-right">
                 <p class="header-top-right__phone-number"><a href="tel:+73919020202">+7 (3919) 02-02-02</a></p>
-                <a class="header-top-right__button" href='#'>
-                    <div class="plus">+</div>
-                    <p class="text">Разместить объявление</p>
-                </a>
+{#                <a class="header-top-right__button" href='#'>#}
+{#                    <div class="plus">+</div>#}
+{#                    <p class="text">Разместить объявление</p>#}
+{#                </a>#}
                 <div class="hamburger">
                     <div class="hamburger__line-one"></div>
                     <div class="hamburger__line-two"></div>
@@ -152,14 +152,11 @@
                     </div>
                 </div>
             </div>
-
             <div class="advanced-search-btn" style="display: none">
                 Расширенный поиск <span class="arrow-down"></span> <span class="arrow-up"></span>
             </div>
             {% get_filters %}
-
         </div>
-
     </div>
 </div>
 <div class="advertisement">
@@ -181,16 +178,17 @@
                             <div class='area'><span class="square">м<span>2</span></span></div>
                             <div>5/5 эт</div>
                         </div>
-                        <div class="substring">Центральный район</div>
-                        <div class="street-name">ул. Лауреатов, д. 43</div>
-                        <div class="substring">27 094 &#8381; / <span class="square">м<span>2</span></span></div>
-                        <div class="price">1 000 000 &#8381;</div>
+                        <div class="substring">{{ item.district }}</div>
+                        <div class="street-name">{{ item.address }}</div>
+                        <div class="substring">{{ item.price_sm }} &#8381; / <span class="square">м<span>2</span></span>
+                        </div>
+                        <div class="price">{{ item.price_sm }} &#8381;</div>
                         <div class="phone-number">
                             <div class="phone-number__block">
                                 <p class='visible'>Показать телефон</p>
-                                <p class="hidden"><a href="tel: +79999997788">+7 (999) 999 77 88</a></p>
+                                <p class="hidden"><a href="tel: {{ item.phone }}">{{ item.phone }}</a></p>
                             </div>
-                            <a href="tel: +79999997788">
+                            <a href="tel: {{ item.phone }}">
                                 <div class="phone-number__icon">
                                     <img src="{% static 'img/svg/phone.svg' %}" alt="phone">
                                 </div>

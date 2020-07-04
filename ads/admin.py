@@ -6,6 +6,7 @@ from .models import Ads, District, DealType, HousingType, ProperType, Finishing
 class AdsAdmin(admin.ModelAdmin):
     list_display = ['id', 'deal_type', 'special_offer']
     list_editable = ['special_offer']
+    save_as = True
 
 
 @admin.register(District)
