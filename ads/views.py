@@ -23,12 +23,6 @@ class HomeView(Filters, ListView):
     template_name = 'ads/index.html'
 
 
-class SearchView(Filters, ListView):
-    model = Ads
-    queryset = Ads.objects.all()
-    context_object_name = 'ads'
-
-
 class FiltersAdsView(Filters, ListView):
     def get_queryset(self):
         queryset = Ads.objects.filter(
@@ -37,8 +31,27 @@ class FiltersAdsView(Filters, ListView):
             proper_type__in=self.request.GET.getlist('proper_type'),
             finishing__in=self.request.GET.getlist('finishing'),
         )
-        if not queryset.exists():
-            queryset = Ads.objects.all()
+
         return queryset
 
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context["deal_type"] = ''.join(
+            [f"deal_type={x}&" for x in self.request.GET.getlist("deal_type")]
+        )
+        context["housing_type"] = ''.join(
+            [f"housing_type={x}&" for x in
+             self.request.GET.getlist("housing_type")]
+        )
+        context["proper_type"] = ''.join(
+            [f"proper_type={x}&" for x in
+             self.request.GET.getlist("proper_type")]
+        )
+        context["finishing"] = ''.join(
+            [f"finishing={x}&" for x in self.request.GET.getlist("finishing")]
+        )
+
+        return context
+
+    paginate_by = 8
     context_object_name = 'ads'

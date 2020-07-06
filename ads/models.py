@@ -1,6 +1,4 @@
 from django.db import models
-from django.urls import reverse
-from phone_field import PhoneField
 
 
 class DealType(models.Model):
@@ -99,15 +97,19 @@ class Ads(models.Model):
     address = models.CharField('Адрес', max_length=255)
     price_sm = models.DecimalField(
         'Цена за квадратный метр',
-        max_digits=8,
+        max_digits=14,
         decimal_places=2,
     )
     price = models.DecimalField(
         'Цена',
-        max_digits=8,
+        max_digits=14,
         decimal_places=2,
     )
-    phone = PhoneField("Номер", blank=True, help_text='Код-номер')
+    phone = models.CharField(
+        "Номер",
+        help_text="Введите номер в формате: 8 (999) 999 99 99",
+        max_length=15
+    )
     special_offer = models.BooleanField('Предложение дня', default=False)
 
     class Meta:

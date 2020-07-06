@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Ключ | Агенство недвижимости</title>
 </head>
 <body>
@@ -160,7 +160,8 @@
 </div>
 <div class="advertisement">
     <div class="wrap">
-        <div class="main">
+        {% include 'ads/inc/_paginated.html' %}
+        <div class="main" style="margin-top: 20px;">
             <div class="map-google">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5629.219439100738!2d88.19969096908977!3d69.34597927836262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x44ac5c1f8bc13abb%3A0x3b52b19813040661!2z0JzRg9C30LXQuSDQndC-0YDQuNC70YzRgdC60LA!5e0!3m2!1sru!2sru!4v1593016836029!5m2!1sru!2sru"
                         height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
