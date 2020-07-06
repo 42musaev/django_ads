@@ -1,5 +1,4 @@
 {% load static %}
-{% load ads_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,10 +22,10 @@
             </div>
             <div class="header-top-right">
                 <p class="header-top-right__phone-number"><a href="tel:+73919020202">+7 (3919) 02-02-02</a></p>
-{#                <a class="header-top-right__button" href='#'>#}
-{#                    <div class="plus">+</div>#}
-{#                    <p class="text">Разместить объявление</p>#}
-{#                </a>#}
+                {#                <a class="header-top-right__button" href='#'>#}
+                {#                    <div class="plus">+</div>#}
+                {#                    <p class="text">Разместить объявление</p>#}
+                {#                </a>#}
                 <div class="hamburger">
                     <div class="hamburger__line-one"></div>
                     <div class="hamburger__line-two"></div>
@@ -102,7 +101,7 @@
                     </div>
 
                 </div>
-                <a class="search-options__btn" href='search-page.html'>
+                <a class="search-options__btn" href='ads_list.html'>
                     Поиск
                 </a>
             </div>
@@ -155,8 +154,8 @@
             <div class="advanced-search-btn" style="display: none">
                 Расширенный поиск <span class="arrow-down"></span> <span class="arrow-up"></span>
             </div>
-            {% get_filters %}
         </div>
+        {% include 'ads/inc/_filters_ads.html' %}
     </div>
 </div>
 <div class="advertisement">
@@ -167,36 +166,7 @@
                         height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
                         tabindex="0"></iframe>
             </div>
-            {% for item in ads %}
-                <div class="advertisement__block">
-                    <div class="advertisement__img">
-                        <img src="{{ item.image.url }}" alt="image" width="264px" height="161">
-                    </div>
-                    <div class="information-block">
-                        <div class="information-block__top">
-                            <div class="information-block__flat">{{ item.number_of_rooms }}-комн. квартира</div>
-                            <div class='area'><span class="square">м<span>2</span></span></div>
-                            <div>5/5 эт</div>
-                        </div>
-                        <div class="substring">{{ item.district }}</div>
-                        <div class="street-name">{{ item.address }}</div>
-                        <div class="substring">{{ item.price_sm }} &#8381; / <span class="square">м<span>2</span></span>
-                        </div>
-                        <div class="price">{{ item.price_sm }} &#8381;</div>
-                        <div class="phone-number">
-                            <div class="phone-number__block">
-                                <p class='visible'>Показать телефон</p>
-                                <p class="hidden"><a href="tel: {{ item.phone }}">{{ item.phone }}</a></p>
-                            </div>
-                            <a href="tel: {{ item.phone }}">
-                                <div class="phone-number__icon">
-                                    <img src="{% static 'img/svg/phone.svg' %}" alt="phone">
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
+            {% include 'ads/inc/_ads_card.html' %}
         </div>
     </div>
 </div>

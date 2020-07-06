@@ -1,5 +1,4 @@
 {% load static %}
-{% load ads_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,7 +102,7 @@
                         </div>
 
                     </div>
-                    <a class="search-options__btn" href='search-page.html'>
+                    <a class="search-options__btn" href='ads_list.html'>
                         Поиск
                     </a>
                 </div>
@@ -158,7 +157,7 @@
                     Расширенный поиск <span class="arrow-down"></span> <span class="arrow-up"></span>
                 </div>
             </div>
-            {% get_filters %}
+            {% include 'ads/inc/_filters_ads.html' %}
 
 
         </div>

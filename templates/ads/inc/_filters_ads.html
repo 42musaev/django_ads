@@ -1,0 +1,27 @@
+<form class="search" action="{% url 'filter' %}">
+    <p>Тип сделки</p>
+    <select name="deal_type">
+        {% for item in view.get_deal_types %}
+            <option value="{{ item.id }}">{{ item.name }}</option>
+        {% endfor %}
+    </select>
+    <p>Тип жилья</p>
+    <select name="housing_type">
+        {% for item in view.get_housing_type %}
+            <option value="{{ item.id }}">{{ item.name }}</option>
+        {% endfor %}
+    </select>
+    <p>Тип недвижимости</p>
+    <select name="proper_type">
+        {% for item in view.get_proper_type %}
+            <option value="{{ item.id }}">{{ item.name }}</option>
+        {% endfor %}
+    </select>
+    <p>Отделка</p>
+    <select name="finishing">
+        {% for item in view.get_finishing %}
+            <option value="{{ item.id }}">{{ item.name }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit">
+</form>
