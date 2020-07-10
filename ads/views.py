@@ -1,5 +1,7 @@
+from django.shortcuts import redirect
 from django.views.generic import ListView
 from .models import Ads, DealType, HousingType, ProperType, Finishing
+from .forms import ApplicationsForm
 
 
 class Filters:
@@ -21,6 +23,11 @@ class HomeView(Filters, ListView):
     queryset = Ads.objects.filter(special_offer=True)
     context_object_name = 'ads'
     template_name = 'ads/index.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['form'] = ApplicationsForm()
+        return context
 
 
 class FiltersAdsView(Filters, ListView):
@@ -55,3 +62,13 @@ class FiltersAdsView(Filters, ListView):
 
     paginate_by = 8
     context_object_name = 'ads'
+
+
+def add_applications(request):
+    form = ApplicationsForm(request.POST)
+    if form.is_valid():
+        form.save()
+        request.session.set_expiry(28800)
+        request.session['success'] = True
+
+    return redirect('/')

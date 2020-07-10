@@ -1,5 +1,12 @@
 from django.contrib import admin
-from .models import Ads, District, DealType, HousingType, ProperType, Finishing
+from .models import Ads, District, DealType, HousingType, ProperType, \
+    Finishing, Applications
+
+
+@admin.register(Applications)
+class ApplicationsAdmin(admin.ModelAdmin):
+    list_display = ['user_name', 'phone']
+    list_display_links = ['user_name']
 
 
 @admin.register(Ads)
