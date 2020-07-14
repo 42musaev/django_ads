@@ -2,11 +2,11 @@
 {% for item in ads %}
     <div class="advertisement__block">
         <div class="advertisement__img">
-            <img src="{{ item.image.url }}" alt="image" width="264px" height="161">
+            <a href="{{ item.get_absolute_url }}"><img src="{{ item.image.url }}" alt="image" width="264px" height="161"></a>
         </div>
         <div class="information-block">
             <div class="information-block__top">
-                <div class="information-block__flat">{{ item.number_of_rooms }}-комн. квартира</div>
+                <div class="information-block__flat">{{ item.number_of_rooms }}-комн. {{ item.housing_type }}</div>
                 <div class='area'><span class="square">м<span>2</span></span></div>
                 <div>5/5 эт</div>
             </div>

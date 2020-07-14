@@ -1,5 +1,5 @@
 from django.shortcuts import redirect
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import Ads, DealType, HousingType, ProperType, Finishing
 from .forms import ApplicationsForm
 
@@ -62,6 +62,16 @@ class FiltersAdsView(Filters, ListView):
 
     paginate_by = 8
     context_object_name = 'ads'
+
+
+class DetailAdsView(DetailView):
+    model = Ads
+    context_object_name = 'ads'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['vali'] = 'гараж'
+        return context
 
 
 def add_applications(request):

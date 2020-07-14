@@ -1,0 +1,268 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+    <title>Ключ | Агенство недвижимости</title>
+</head>
+<body>
+<div class="offer-top">
+    <div class="wrap">
+        <div class="header-top">
+            <div class="logo">
+                <div class="logo__img">
+                    <a href="index.html">
+                        <img src="{% static 'img/svg/logo.svg' %}" alt="логотип"></a>
+                </div>
+                <div class="logo__text">
+                    <a href="index.html">
+                        <img src="{% static 'img/svg/logo_text.svg' %}" alt="Центр недвижимости"></a>
+                </div>
+            </div>
+            <div class="header-top-right">
+                <p class="header-top-right__phone-number"><a href="tel:+73919020202">+7 (3919) 02-02-02</a></p>
+                </a>
+                <div class="hamburger">
+                    <div class="hamburger__line-one"></div>
+                    <div class="hamburger__line-two"></div>
+                    <div class="hamburger__line-three"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{#<div class="link">#}
+{#    <div class="wrap">#}
+{#        <a href="index.html">Главная ›</a>#}
+{#        <a href="#">Двухкомнатные квартиры ›</a>#}
+{#        <a href="#">ул. Лауреатов, д. 43 </a>#}
+{#    </div>#}
+{#</div>#}
+
+<div class="content-wrap" style="margin-top: 50px;">
+    <div class="wrap">
+        <div class="content">
+            <div class="content__block">
+                <div class="images">
+                    <div class="images__first-img">
+                        <img src="{% static 'img/big-img.png' %}" alt="image">
+                    </div>
+                    <div class="images__small-img">
+                        <div class="images__small-img-1">
+                            <img src="{% static 'img/small-img-1.png' %}" alt="image">
+                        </div>
+                        <div class="images__small-img-2">
+                            <img src="{% static 'img/small-img-1.png' %}" alt="images">
+                        </div>
+                    </div>
+                </div>
+                <div class="text-content">
+                    <div class="information">
+                        <div class="information__top">
+                            <div class="information__left">
+                                <div class="information__flat">{{ ads.number_of_rooms }}-комн. {% if ads.proper_type|stringformat:"s"|lower == 'гараж' %}{{ ads.proper_type|lower }}{% else %}{{ ads.housing_type|lower }}{% endif %}</div>
+                                <div class='area'>{{ ads.apartment_area }} <span class="square">м<span>2</span></span>
+                                </div>
+                                <div>{{ ads.apartment_floor }}/{{ ads.house_floor }} эт</div>
+                            </div>
+                            <div class="information__right">
+                                <p class="price">{{ ads.price }} <img src="{% static 'img/svg/rub.svg' %}" alt=""></p>
+                                <div class='area'>{{ ads.price_sm }} &#8381; / <span
+                                        class="square">м<span>2</span></span></div>
+                            </div>
+                        </div>
+                        <div class="information__street">
+                            {{ ads.address }}
+                            {#                            <a href="#">Показать на карте</a>#}
+                        </div>
+                    </div>
+                    <div class="content-buttons">
+                        {#                        <div class="btn-content">#}
+                        {#                            <div class="btn-content__img">#}
+                        {#                                <img src="{% static 'img/svg/heart.svg' %}" alt="hurt">#}
+                        {#                            </div>#}
+                        {#                            <div class="btn-content__text">#}
+                        {#                                Добавить в избранное#}
+                        {#                            </div>#}
+                        {#                        </div>#}
+{#                        <div class="btn btn-new-style">#}
+{#                            Купить в ипотеку#}
+{#                        </div>#}
+{#                        <div class="btn-link">#}
+{#                            <img src="{% static 'img/svg/link.svg' %}" alt="link">#}
+{#                        </div>#}
+                    </div>
+                    <div class="description">
+                        <div class="description__title">Описание</div>
+                        <div class="description__text">
+                            <p>
+                                {{ ads.description }}
+                            </p>
+                        </div>
+                    </div>
+                    {% if not ads.proper_type|stringformat:"s"|lower == "гараж" %}
+                        <div class="table">
+                            <div class="table__one">
+                                <h2>Характеристики</h2>
+                                <table>
+                                    <tr>
+                                        <td class='td-title'>Комнатность</td>
+                                        <td class='td-subtitle'>{{ ads.number_of_rooms }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='td-title'>Общая площадь</td>
+                                        <td class='td-subtitle'>{{ ads.apartment_area }} м²</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='td-title'>Высота потолков</td>
+                                        <td class='td-subtitle'>{{ ads.height_of_ceilings }} м</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='td-title'>Ремонт</td>
+                                        <td class='td-subtitle'>{{ ads.repair }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='td-title'>Санузел</td>
+                                        <td class='td-subtitle'>{{ ads.bathroom }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='td-title'>Балкон</td>
+                                        <td class='td-subtitle'>{{ ads.balcony }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='td-title'>Материал окон</td>
+                                        <td class='td-subtitle'>{{ ads.window_material }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='td-title'>Солнечная сторона</td>
+                                        <td class='td-subtitle'>{{ ads.sunny_side }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='td-title'>Вид из окон</td>
+                                        <td class='td-subtitle'>{{ ads.view_from_windows }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='td-title'>Дверь</td>
+                                        <td class='td-subtitle'>{{ ads.door }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='td-title'>Подключённые сервисы</td>
+                                        <td class='td-subtitle'>{% for i in ads.connected_services.all %}{{ i }} {% endfor %}</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="table__two">
+                                <h2>О доме</h2>
+                                <table>
+
+                                    <tr>
+                                        <td class='td-title'>Этаж (этажность)</td>
+                                        <td class='td-subtitle'>{{ ads.apartment_floor }}/{{ ads.house_floor }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='td-title'>Серия</td>
+                                        <td class='td-subtitle'>{{ ads.series }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='td-title'>Год постройки</td>
+                                        <td class='td-subtitle'>{{ ads.year_construction }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='td-title'>Стены</td>
+                                        <td class='td-subtitle'>{{ ads.walls }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='td-title'>Лифт</td>
+                                        <td class='td-subtitle'>{{ ads.elevator }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='td-title'>Номер дома</td>
+                                        <td class='td-subtitle'>{{ ads.house_number }}</td>
+                                    </tr>
+                                </table>
+                                <h2 class='table-three'>Двор</h2>
+                                <table>
+                                    <tr>
+                                        <td class='td-title'>Двор</td>
+                                        <td class='td-subtitle'>{{ ads.yard }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='td-title'>Парковка</td>
+                                        <td class='td-subtitle'>{{ ads.parking }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+
+            <div class="contact-form">
+                <div class="contact-form__title">
+                    Об этом объекте все знает:
+                </div>
+                <div class="business-card">
+                    <div class="business-card__img">
+                        <img src="{% static 'img/photo.png' %}" alt="photo">
+                    </div>
+                    <div class="business-card__data">
+                        <div class="full-name">Звягинцева Ина Федоровна</div>
+                        <div class="phone-number">
+                            <div class="phone-number__icon">
+                                <img src="{% static 'img/svg/phone-b.svg' %}" alt="icon">
+                                <a href="tel:+79999997788">+7 (999) 999 77 88</a>
+                                <div class="message">или оставьте Ваш номер, и я вам перезвоню:</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <form action="" class="form">
+                    <fieldset class='request__fieldset'>
+                        <legend class='request__legend'>Номер телефона</legend>
+                        <input type="tel" class="request__input" placeholder="+7 (___) ___-__-__">
+                    </fieldset>
+                    <button class="btn">Отправить заявку</button>
+                </form>
+                <p class='footer-text'>Отправляя заявку, вы соглашаетесь на обработку персональных данных</p>
+            </div>
+        </div>
+        <div class="google-map-block">
+            <div class="map-google">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5629.219439100738!2d88.19969096908977!3d69.34597927836262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x44ac5c1f8bc13abb%3A0x3b52b19813040661!2z0JzRg9C30LXQuSDQndC-0YDQuNC70YzRgdC60LA!5e0!3m2!1sru!2sru!4v1593016836029!5m2!1sru!2sru"
+                        width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""
+                        aria-hidden="false" tabindex="0"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="wrap">
+        <div class="footer footer_margin-3">
+            <div class="footer__img">
+                <img src="{% static 'img/svg/logo2.svg' %}" alt="logo">
+            </div>
+            <div class="footer__adress">
+                <p>г. Норильск, ул. Пушкина, д. 52</p>
+                <a href="tel:+73919020202">+7 (3919) 02-02-02</a>
+            </div>
+            <div class="footer__root">
+                <p>Политика конфиденциальности</p>
+                <p>Условия обработки персональных данных</p>
+            </div>
+            <div class="footer__made-in">
+                Сделано
+                <img src="{% static 'img/svg/copyright.svg' %}" alt="logo">
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="{% static 'js/libs.min.js' %}"></script>
+<script src="{% static 'js/script.min.js' %}"></script>
+</body>
+</html>
