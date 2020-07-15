@@ -243,7 +243,7 @@ class HouseNumber(models.Model):
 
 
 class Ads(models.Model):
-    image = models.ImageField('Главная фотография', blank=True)
+    image = models.ImageField('Главная фотография', upload_to='apartments')
     deal_type = models.ForeignKey(
         'DealType',
         verbose_name='Типы сделки',
@@ -390,3 +390,16 @@ class Ads(models.Model):
     class Meta:
         verbose_name = 'Обявление'
         verbose_name_plural = 'Объявления'
+
+
+class ApartmentShots(models.Model):
+    image = models.ImageField("Изображение", upload_to="apartments_shots")
+    ads = models.ForeignKey(
+        'Ads',
+        verbose_name="Объявление",
+        on_delete=models.CASCADE
+    )
+
+    class Meta:
+        verbose_name = "Кадр"
+        verbose_name_plural = "Кадры"

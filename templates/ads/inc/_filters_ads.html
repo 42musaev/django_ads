@@ -1,27 +1,53 @@
-<form class="search" action="{% url 'filter' %}">
-    <p>Тип сделки</p>
-    <select name="deal_type">
-        {% for item in view.get_deal_types %}
-            <option value="{{ item.id }}">{{ item.name }}</option>
-        {% endfor %}
-    </select>
-    <p>Тип жилья</p>
-    <select name="housing_type">
-        {% for item in view.get_housing_type %}
-            <option value="{{ item.id }}">{{ item.name }}</option>
-        {% endfor %}
-    </select>
-    <p>Тип недвижимости</p>
-    <select name="proper_type">
-        {% for item in view.get_proper_type %}
-            <option value="{{ item.id }}">{{ item.name }}</option>
-        {% endfor %}
-    </select>
-    <p>Отделка</p>
-    <select name="finishing">
-        {% for item in view.get_finishing %}
-            <option value="{{ item.id }}">{{ item.name }}</option>
-        {% endfor %}
-    </select>
-    <input type="submit">
+<form class="search" action="{% url 'filter' %}" style="background: #fff; border-radius: 5px;">
+    <div class='search-options'>
+        <div class="search-options__item">
+            <div class="search-options__text first">
+                <p class="search-options__substing">Тип сделки</p>
+                <div>
+                    <select name="deal_type" class="selectric">
+                        {% for item in view.get_deal_types %}
+                            <option value="{{ item.id }}">{{ item.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="search-options__item">
+            <div class="search-options__text">
+                <p class="search-options__substing">Тип жилья</p>
+                <div>
+                    <select name="housing_type" class="selectric">
+                        {% for item in view.get_housing_type %}
+                            <option value="{{ item.id }}">{{ item.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="search-options__item">
+            <div class="search-options__text">
+                <p class="search-options__substing">Тип недвижимости</p>
+                <div>
+                    <select name="proper_type" class="selectric">
+                        {% for item in view.get_proper_type %}
+                            <option value="{{ item.id }}">{{ item.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="search-options__item">
+            <div class="search-options__text">
+                <p class="search-options__substing">Отделка</p>
+                <div>
+                    <select name="finishing" class="selectric">
+                        {% for item in view.get_finishing %}
+                            <option value="{{ item.id }}">{{ item.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <input type="submit" class="search-options__btn" value="Поиск">
+    </div>
 </form>

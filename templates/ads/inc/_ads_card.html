@@ -2,7 +2,7 @@
 {% for item in ads %}
     <div class="advertisement__block">
         <div class="advertisement__img">
-            <a href="{{ item.get_absolute_url }}"><img src="{{ item.image.url }}" alt="image" width="264px" height="161"></a>
+            <a href="{{ item.get_absolute_url }}"><img src="{{ item.image.url }}" alt="image" width="264px" height="161" style="border-radius: 5px;"></a>
         </div>
         <div class="information-block">
             <div class="information-block__top">

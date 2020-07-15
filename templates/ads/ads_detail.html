@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Ключ | Агенство недвижимости</title>
 </head>
 <body>
@@ -13,11 +13,11 @@
         <div class="header-top">
             <div class="logo">
                 <div class="logo__img">
-                    <a href="index.html">
+                    <a href="{% url 'home' %}">
                         <img src="{% static 'img/svg/logo.svg' %}" alt="логотип"></a>
                 </div>
                 <div class="logo__text">
-                    <a href="index.html">
+                    <a href="{% url 'home' %}">
                         <img src="{% static 'img/svg/logo_text.svg' %}" alt="Центр недвижимости"></a>
                 </div>
             </div>
@@ -33,7 +33,6 @@
         </div>
     </div>
 </div>
-
 {#<div class="link">#}
 {#    <div class="wrap">#}
 {#        <a href="index.html">Главная ›</a>#}
@@ -46,24 +45,20 @@
     <div class="wrap">
         <div class="content">
             <div class="content__block">
-                <div class="images">
-                    <div class="images__first-img">
-                        <img src="{% static 'img/big-img.png' %}" alt="image">
-                    </div>
-                    <div class="images__small-img">
-                        <div class="images__small-img-1">
-                            <img src="{% static 'img/small-img-1.png' %}" alt="image">
-                        </div>
-                        <div class="images__small-img-2">
-                            <img src="{% static 'img/small-img-1.png' %}" alt="images">
-                        </div>
-                    </div>
+                <img src="{{ ads.apartmentshots_set.first.image.url }}" id="main">
+                <div id="thumbnails">
+                    {% for slide in ads.apartmentshots_set.all %}
+                        <img src="{{ slide.image.url }}">
+                    {% endfor %}
                 </div>
                 <div class="text-content">
                     <div class="information">
                         <div class="information__top">
                             <div class="information__left">
-                                <div class="information__flat">{{ ads.number_of_rooms }}-комн. {% if ads.proper_type|stringformat:"s"|lower == 'гараж' %}{{ ads.proper_type|lower }}{% else %}{{ ads.housing_type|lower }}{% endif %}</div>
+                                <div class="information__flat">{{ ads.number_of_rooms }}-комн.
+                                    {% if ads.proper_type|stringformat:"s"|lower == 'гараж' %}
+                                        {{ ads.proper_type|lower }}{% else %}
+                                        {{ ads.housing_type|lower }}{% endif %}</div>
                                 <div class='area'>{{ ads.apartment_area }} <span class="square">м<span>2</span></span>
                                 </div>
                                 <div>{{ ads.apartment_floor }}/{{ ads.house_floor }} эт</div>
@@ -88,12 +83,12 @@
                         {#                                Добавить в избранное#}
                         {#                            </div>#}
                         {#                        </div>#}
-{#                        <div class="btn btn-new-style">#}
-{#                            Купить в ипотеку#}
-{#                        </div>#}
-{#                        <div class="btn-link">#}
-{#                            <img src="{% static 'img/svg/link.svg' %}" alt="link">#}
-{#                        </div>#}
+                        {#                        <div class="btn btn-new-style">#}
+                        {#                            Купить в ипотеку#}
+                        {#                        </div>#}
+                        {#                        <div class="btn-link">#}
+                        {#                            <img src="{% static 'img/svg/link.svg' %}" alt="link">#}
+                        {#                        </div>#}
                     </div>
                     <div class="description">
                         <div class="description__title">Описание</div>
@@ -150,7 +145,8 @@
                                     </tr>
                                     <tr>
                                         <td class='td-title'>Подключённые сервисы</td>
-                                        <td class='td-subtitle'>{% for i in ads.connected_services.all %}{{ i }} {% endfor %}</td>
+                                        <td class='td-subtitle'>
+                                            {% for i in ads.connected_services.all %}{{ i }} {% endfor %}</td>
                                     </tr>
                                 </table>
                             </div>
@@ -262,7 +258,7 @@
         </div>
     </div>
 </footer>
-<script src="{% static 'js/libs.min.js' %}"></script>
-<script src="{% static 'js/script.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/slider.js' %}"></script>
 </body>
 </html>

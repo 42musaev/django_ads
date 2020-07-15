@@ -13,11 +13,10 @@
         <div class="header-top">
             <div class="logo">
                 <div class="logo__img">
-                    <a href="index.html"><img src="{% static 'img/svg/logo.svg' %}" alt="логотип"></a>
+                    <a href="{% url 'home' %}"><img src="{% static 'img/svg/logo.svg' %}" alt="логотип"></a>
                 </div>
                 <div class="logo__text">
-                    <a href="index.html"><img src="{% static 'img/svg/logo_text.svg' %}" alt="Центр недвижимости"></a>
-
+                    <a href="{% url 'home' %}"><img src="{% static 'img/svg/logo_text.svg' %}" alt="Центр недвижимости"></a>
                 </div>
             </div>
             <div class="header-top-right">
@@ -192,7 +191,6 @@
         </div>
     </div>
 </footer>
-<script src="{% static 'js/libs.min.js' %}"></script>
-<script src="{% static 'js/script.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

@@ -70,7 +70,6 @@ class DetailAdsView(DetailView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['vali'] = 'гараж'
         return context
 
 

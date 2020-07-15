@@ -8,18 +8,16 @@
     <title>Ключ | Агенство недвижимости</title>
 </head>
 <body>
-
 <header>
     <div class="header">
         <div class="wrap">
             <div class="header-top">
                 <div class="logo">
                     <div class="logo__img">
-                        <a href="#"><img src="{% static 'img/svg/logo.svg' %}" alt="логотип"></a>
-
+                        <a href="{% url 'home' %}"><img src="{% static 'img/svg/logo.svg' %}" alt="логотип"></a>
                     </div>
                     <div class="logo__text">
-                        <a href="#"><img src="{% static 'img/svg/logo_text.svg' %}" alt="Центр недвижимости"></a>
+                        <a href="{% url 'home' %}"><img src="{% static 'img/svg/logo_text.svg' %}" alt="Центр недвижимости"></a>
                     </div>
                 </div>
                 <div class="header-top-right">
@@ -214,7 +212,7 @@
         </div>
     </div>
 </div>
-<div class="advantages">
+<div class="advantages" id="add_applications">
     <div class="wrap">
         <div class="text-title">
             Почему с нами лучше?
@@ -305,7 +303,7 @@
             <div class="substring">Поможем получить одобрение банков, чтобы вы могли понимать бюджет на покупку
                 квартиры
             </div>
-            <div class="btn">Подать заявку онлайн</div>
+            <a href="#add_applications"><div class="btn">Подать заявку онлайн</div></a>
         </div>
         <ul class="steps">
             <li class="steps__block">
@@ -363,7 +361,7 @@
         </div>
     </div>
 </footer>
-<script src="{% static 'js/libs.min.js' %}"></script>
-<script src="{% static 'js/script.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/scroll.js' %}"></script>
 </body>
 </html>

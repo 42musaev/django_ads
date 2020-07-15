@@ -1,8 +1,15 @@
 from django.contrib import admin
+
 from .models import Ads, District, DealType, HousingType, ProperType, \
     Finishing, Applications, Repair, Bathroom, Balcony, SunnySide, \
     ViewFromWindows, Door, ConnectedServices, Yard, Parking, Series, \
-    YearConstruction, Walls, Elevator, HouseNumber, WindowMaterial
+    YearConstruction, Walls, Elevator, HouseNumber, WindowMaterial, \
+    ApartmentShots
+
+
+class MovieShotsInline(admin.TabularInline):
+    model = ApartmentShots
+    extra = 1
 
 
 @admin.register(Applications)
@@ -15,6 +22,7 @@ class ApplicationsAdmin(admin.ModelAdmin):
 class AdsAdmin(admin.ModelAdmin):
     list_display = ['id', 'deal_type', 'special_offer']
     list_editable = ['special_offer']
+    inlines = [MovieShotsInline]
     save_as = True
 
 
