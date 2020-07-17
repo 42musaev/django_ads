@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.safestring import mark_safe
 
 from .models import Ads, District, DealType, HousingType, ProperType, \
     Finishing, Applications, Repair, Bathroom, Balcony, SunnySide, \
@@ -14,8 +15,14 @@ class MovieShotsInline(admin.TabularInline):
 
 @admin.register(Applications)
 class ApplicationsAdmin(admin.ModelAdmin):
-    list_display = ['user_name', 'phone']
-    list_display_links = ['user_name']
+    def ads(self):
+        html = ""
+        for obj in Ads.objects.filter(applications=self.id):
+            html += f'<a href="{obj.get_admin_url()}">{obj.id}</a>'
+        return mark_safe(html)
+
+    readonly_fields = ['user_name', 'phone', 'ads']
+    list_display = ['user_name', 'phone', ads]
 
 
 @admin.register(Ads)

@@ -15,9 +15,10 @@
                 <div class="logo">
                     <div class="logo__img">
                         <a href="{% url 'home' %}"><img src="{% static 'img/svg/logo.svg' %}" alt="логотип"></a>
+
                     </div>
                     <div class="logo__text">
-                        <a href="{% url 'home' %}"><img src="{% static 'img/svg/logo_text.svg' %}" alt="Центр недвижимости"></a>
+                        <a href="{% url 'home' %}   "><img src="{% static 'img/svg/logo_text.svg' %}" alt="Центр недвижимости"></a>
                     </div>
                 </div>
                 <div class="header-top-right">
@@ -166,7 +167,7 @@
     <div class="wrap">
         <div class="top">
             <h1 class="title">Лучшие предложения дня</h1>
-            <a href='ads_detail.html' class='string'>Смотреть все </a>
+            <a href='offer.html' class='string'>Смотреть все </a>
             <div class="arrow">
                 <div class="arrow__left"><i class="fas fa-chevron-left"></i></div>
                 <div class="arrow__right"><i class="fas fa-chevron-right"></i></div>
@@ -193,7 +194,7 @@
                         <div class="street-name">{{ item.address }}</div>
                         <div class="substring">{{ item.price_sm }} &#8381; / <span class="square">м<span>2</span></span>
                         </div>
-                        <div class="price">{{ item.price }} &#8381; <span class='old-price'>1 200 000 &#8381;</span>
+                        <div class="price">{{ item.price }} &#8381; {#<span class='old-price'>1 200 000 &#8381;</span>#}
                         </div>
                         <div class="phone-number">
                             <div class="phone-number__block">
@@ -212,13 +213,13 @@
         </div>
     </div>
 </div>
-<div class="advantages" id="add_applications">
+<div class="advantages">
     <div class="wrap">
         <div class="text-title">
             Почему с нами лучше?
         </div>
         <div class="all-advantages">
-            <div class="all-advantages__block">
+            <div class="all-advantages__block" id="add_applications">
                 <div class="all-advantages__img">
                     <img src="{% static 'img/adv-01.png' %}" alt="img">
                 </div>
@@ -275,24 +276,24 @@
             <a href="tel: +73919020202" class="consultation__phone">+7 (3919) 02-02-02</a>
             <i class="fab fa-whatsapp"></i>
         </div>
-        {% if request.session.success %}
-        <h1 style="color: #00ff03">Ваша заявка принята</h1>
-            {% else %}
-        <form action="{% url 'add_applications' %}" class="request" method="post">
-            {% csrf_token %}
-            <fieldset class='request__fieldset'>
-                <legend class='request__legend'>Имя</legend>
-                {{ form.user_name }}
-            </fieldset>
-            <fieldset class='request__fieldset'>
-                <legend class='request__legend'>Номер телефона</legend>
-                {{ form.phone }}
-            </fieldset>
-            <button class="btn">Отправить заявку</button>
-            <p class="message">
-                Отправляя заявку, вы соглашаетесь на обработку персональных данных
-            </p>
-        </form>
+        {% if request.session.success_index %}
+            <div class="text-title" style="color: #00ff03; font-size: 25px;">Ваша заявка принята</div>
+        {% else %}
+            <form action="{% url 'add_applications' None %}" class="request" method="post">
+                {% csrf_token %}
+                <fieldset class='request__fieldset'>
+                    <legend class='request__legend'>Имя</legend>
+                    {{ form.user_name }}
+                </fieldset>
+                <fieldset class='request__fieldset'>
+                    <legend class='request__legend'>Номер телефона</legend>
+                    {{ form.phone }}
+                </fieldset>
+                <button class="btn">Отправить заявку</button>
+                <p class="message">
+                    Отправляя заявку, вы соглашаетесь на обработку персональных данных
+                </p>
+            </form>
         {% endif %}
     </div>
 </div>
@@ -361,6 +362,7 @@
         </div>
     </div>
 </footer>
+<script src="{% static 'js/libs.min.js' %}"></script>
 <script src="{% static 'js/script.js' %}"></script>
 <script src="{% static 'js/scroll.js' %}"></script>
 </body>

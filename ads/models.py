@@ -3,11 +3,19 @@ from django.urls import reverse
 
 
 class Applications(models.Model):
-    user_name = models.CharField('Имя', max_length=255)
+    user_name = models.CharField('Имя', max_length=255, blank=True, null=True)
     phone = models.CharField('Номер', max_length=15)
+    ads = models.ForeignKey(
+        'Ads',
+        verbose_name='Объект',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+
+    )
 
     def __str__(self):
-        return self.user_name
+        return f'Объект с ID{self.id}'
 
     class Meta:
         verbose_name = 'Заявка'
@@ -386,6 +394,12 @@ class Ads(models.Model):
 
     def get_absolute_url(self):
         return reverse('ads_detail', kwargs={'pk': self.pk})
+
+    def __str__(self):
+        return f'ID: {self.id}'
+
+    def get_admin_url(self):
+        return f"/admin/ads/ads/{self.id}/"
 
     class Meta:
         verbose_name = 'Обявление'
