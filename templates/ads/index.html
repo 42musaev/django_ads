@@ -52,7 +52,6 @@
                                 <li class="navbar__item"><a href="#"> Аренда </a></li>
                             </ul>
                         </div>
-
                     </div>
                     <div class="search-options__item">
                         <div class="search-options__text">
@@ -68,7 +67,6 @@
                                 <li class="navbar__item"><a href="#"> Общежитие </a></li>
                             </ul>
                         </div>
-
                     </div>
                     <div class="search-options__item">
                         <div class="search-options__text">
@@ -152,14 +150,11 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="advanced-search-btn" style="display: none;">
                     Расширенный поиск <span class="arrow-down"></span> <span class="arrow-up"></span>
                 </div>
             </div>
             {% include 'ads/inc/_filters_ads.html' %}
-
-
         </div>
     </div>
 </header>
@@ -167,7 +162,7 @@
     <div class="wrap">
         <div class="top">
             <h1 class="title">Лучшие предложения дня</h1>
-            <a href='offer.html' class='string'>Смотреть все </a>
+            <a href='{% url 'ads_list' %}' class='string'>Смотреть все </a>
             <div class="arrow">
                 <div class="arrow__left"><i class="fas fa-chevron-left"></i></div>
                 <div class="arrow__right"><i class="fas fa-chevron-right"></i></div>
@@ -178,7 +173,7 @@
             {% for item in ads %}
                 <div class="slider__block slider__block_width">
                     <div class="slider__img">
-                        <img src="{{ item.image.url }}" alt="" width="360" height="220">
+                        <a href="{{ item.get_absolute_url }}"><img src="{{ item.image.url }}" alt="" width="360" height="220"></a>
                         <div class="heart">
 
                         </div>

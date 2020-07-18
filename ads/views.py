@@ -34,6 +34,14 @@ class HomeView(Filters, ListView):
         return context
 
 
+class AdsList(Filters, ListView):
+    model = Ads
+    queryset = Ads.objects.filter(special_offer=True)
+    context_object_name = 'ads'
+    template_name = 'ads_list.html'
+    paginate_by = 8
+
+
 class FiltersAdsView(Filters, ListView):
     def get_queryset(self):
         queryset = Ads.objects.filter(
@@ -96,5 +104,3 @@ class AddApplications(View):
             request.session['success_index'] = True
             form.save()
         return redirect('/#add_applications')
-
-

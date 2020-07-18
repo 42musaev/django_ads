@@ -6,69 +6,6 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-var select = document.querySelectorAll(".select");
-var body = document.body;
-body.addEventListener("click", function (event) {
-  var _iterator = _createForOfIteratorHelper(select),
-      _step;
-
-  try {
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var item = _step.value;
-
-      if (item != event.target) {
-        item.querySelector(".select__nav").style.display = "none";
-        item.setAttribute('data-close', 'true');
-      }
-    }
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
-  }
-});
-
-var _iterator2 = _createForOfIteratorHelper(select),
-    _step2;
-
-try {
-  var _loop = function _loop() {
-    var item = _step2.value;
-    item.addEventListener("click", function (event) {
-      onNavbarElement(event, item);
-    });
-  };
-
-  for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-    _loop();
-  }
-} catch (err) {
-  _iterator2.e(err);
-} finally {
-  _iterator2.f();
-}
-
-function onNavbarElement(tag, item) {
-  var close = Boolean(item.dataset.close);
-
-  if (close && tag.target.className == "select") {
-    item.querySelector(".select__nav").style.display = "block";
-    item.setAttribute('data-close', '');
-    console.log(tag.target);
-  } else if (tag.target.className == "select") {
-    item.querySelector(".select__nav").style.display = "none";
-    item.setAttribute('data-close', 'true');
-  }
-
-  var option = tag.target;
-
-  if (option.className == 'select__option' && !close) {
-    item.firstChild.data = option.innerText;
-    item.querySelector(".select__nav").style.display = "none";
-    item.setAttribute('data-close', 'true');
-  }
-}
-
 var checkClick = 0;
 var advancedSearchBtn = document.querySelector(".advanced-search-btn");
 advancedSearchBtn.addEventListener("click", function () {
@@ -113,25 +50,25 @@ $('.slider').slick({
 
 var hearts = document.querySelectorAll(".heart svg");
 
-var _iterator3 = _createForOfIteratorHelper(hearts),
-    _step3;
+var _iterator = _createForOfIteratorHelper(hearts),
+    _step;
 
 try {
-  var _loop2 = function _loop2() {
-    var heart = _step3.value;
+  var _loop = function _loop() {
+    var heart = _step.value;
     var active = false;
     heart.addEventListener("click", function () {
       active = onHeartClick(heart, active);
     });
   };
 
-  for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-    _loop2();
+  for (_iterator.s(); !(_step = _iterator.n()).done;) {
+    _loop();
   }
 } catch (err) {
-  _iterator3.e(err);
+  _iterator.e(err);
 } finally {
-  _iterator3.f();
+  _iterator.f();
 }
 
 function onHeartClick(heart, active) {
@@ -146,23 +83,40 @@ function onHeartClick(heart, active) {
 
 var numbers = document.querySelectorAll(".phone-number__block");
 
-var _iterator4 = _createForOfIteratorHelper(numbers),
-    _step4;
+var _iterator2 = _createForOfIteratorHelper(numbers),
+    _step2;
 
 try {
-  var _loop3 = function _loop3() {
-    var number = _step4.value;
+  var _loop2 = function _loop2() {
+    var number = _step2.value;
     number.addEventListener("click", function () {
       number.querySelector(".hidden").classList.remove("hidden");
       number.querySelector(".visible").classList.add("hidden");
     });
   };
 
-  for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-    _loop3();
+  for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+    _loop2();
   }
 } catch (err) {
-  _iterator4.e(err);
+  _iterator2.e(err);
 } finally {
-  _iterator4.f();
+  _iterator2.f();
 }
+
+$('.selectric').selectric();
+var $selectValue = $('#select_value').find('strong'); // Get initial value
+
+$selectValue.text($('#get_value').val()); // Initialize Selectric and bind to 'change' event
+
+$('#get_value').selectric().on('change', function () {
+  $selectValue.text($(this).val());
+});
+$('.select').selectric();
+var $selectValue = $('#select_value').find('strong'); // Get initial value
+
+$selectValue.text($('#get_value').val()); // Initialize Selectric and bind to 'change' event
+
+$('#get_value').selectric().on('change', function () {
+  $selectValue.text($(this).val());
+});

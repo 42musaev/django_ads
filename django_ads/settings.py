@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'ads.apps.AdsConfig',
+    'admin_reorder',
 ]
 
 MIDDLEWARE = [
@@ -36,6 +37,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'admin_reorder.middleware.ModelAdminReorder',
 ]
 
 ROOT_URLCONF = 'django_ads.urls'
@@ -61,7 +64,6 @@ WSGI_APPLICATION = 'django_ads.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
 
 
 # Password validation
@@ -100,7 +102,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -108,3 +109,42 @@ try:
     from .local_settings import *
 except ImportError:
     from .prod_settings import *
+
+ADMIN_REORDER = (
+    # Keep original label and models
+    'sites',
+
+    # Rename app
+    {'app': 'auth', 'label': 'Пользаватели'},
+
+    # Exclude models
+    {'app': 'ads', 'models': ('ads.Ads',)},
+    # Exclude models    # Exclude models
+    {'app': 'ads', 'label': 'Заявки', 'models': ('ads.Applications',)},
+
+    {'app': 'ads', 'label': 'Фильтры', 'models':
+        (
+            'ads.DealType',
+            'ads.District',
+            'ads.HousingType',
+            'ads.ProperType',
+            'ads.Finishing',
+            'ads.Repair',
+            'ads.Bathroom',
+            'ads.Balcony',
+            'ads.SunnySide',
+            'ads.ViewFromWindows',
+            'ads.Door',
+            'ads.ConnectedServices',
+            'ads.Yard',
+            'ads.WindowMaterial',
+            'ads.Parking',
+            'ads.Series',
+            'ads.YearConstruction',
+            'ads.Walls',
+            'ads.Elevator',
+            'ads.HouseNumber'
+
+        )
+     },
+)
