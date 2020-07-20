@@ -143,7 +143,8 @@ ADMIN_REORDER = (
             'ads.YearConstruction',
             'ads.Walls',
             'ads.Elevator',
-            'ads.HouseNumber'
+            'ads.HouseNumber',
+            'ads.UpTo'
 
         )
      },

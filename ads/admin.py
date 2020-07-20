@@ -5,7 +5,7 @@ from .models import Ads, District, DealType, HousingType, ProperType, \
     Finishing, Applications, Repair, Bathroom, Balcony, SunnySide, \
     ViewFromWindows, Door, ConnectedServices, Yard, Parking, Series, \
     YearConstruction, Walls, Elevator, HouseNumber, WindowMaterial, \
-    ApartmentShots
+    ApartmentShots, UpTo
 
 
 class MovieShotsInline(admin.TabularInline):
@@ -151,3 +151,8 @@ class HouseNumberAdmin(admin.ModelAdmin):
 class WindowMaterialAdmin(admin.ModelAdmin):
     list_display = ['name']
     list_display_links = ['name']
+
+
+@admin.register(UpTo)
+class FromToAdmin(admin.ModelAdmin):
+    list_display = ['up', 'to']

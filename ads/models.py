@@ -273,8 +273,14 @@ class Ads(models.Model):
         default=1
     )
     apartment_area = models.IntegerField(
-        'Площадь квартиры',
+        'Общая площадь',
         help_text='Укажите без знака квадрата.'
+    )
+    area_range = models.ForeignKey(
+        'UpTo',
+        verbose_name="Фильтр, диапазон поиска",
+        help_text='Введите в какой диапазон входит поиск',
+        on_delete=models.CASCADE,
     )
     house_floor = models.IntegerField(
         'Этажи дома',
@@ -417,3 +423,15 @@ class ApartmentShots(models.Model):
     class Meta:
         verbose_name = "Кадр"
         verbose_name_plural = "Кадры"
+
+
+class UpTo(models.Model):
+    up = models.IntegerField("От", default=0)
+    to = models.IntegerField("До", default=0)
+
+    class Meta:
+        verbose_name = "От и до"
+        verbose_name_plural = "От и до"
+
+    def __str__(self):
+        return f"От {self.up} До {self.to}"

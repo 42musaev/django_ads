@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.views.generic import ListView, DetailView
 from django.views.generic.base import View
 
-from .models import Ads, DealType, HousingType, ProperType, Finishing
+from .models import Ads, DealType, HousingType, ProperType, Finishing, UpTo
 from .forms import ApplicationsForm
 
 
@@ -20,6 +20,9 @@ class Filters:
 
     def get_finishing(self):
         return Finishing.objects.all()
+
+    def get_up_tp(self):
+        return UpTo.objects.all()
 
 
 class HomeView(Filters, ListView):
@@ -49,6 +52,7 @@ class FiltersAdsView(Filters, ListView):
             housing_type__in=self.request.GET.getlist('housing_type'),
             proper_type__in=self.request.GET.getlist('proper_type'),
             finishing__in=self.request.GET.getlist('finishing'),
+            area_range__in=self.request.GET.getlist('up_tp'),
         )
 
         return queryset

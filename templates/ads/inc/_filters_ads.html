@@ -1,4 +1,4 @@
-<form class="search" action="{% url 'filter' %}" >
+<form class="search" action="{% url 'filter' %}">
     <div class='search-options'>
         <div class="search-options__item">
             <div class="search-options__text first">
@@ -43,6 +43,20 @@
                     <select name="finishing" class="selectric">
                         {% for item in view.get_finishing %}
                             <option class="selectric__item" value="{{ item.id }}">{{ item.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="search-options__item">
+            <div class="search-options__text">
+                <p class="search-options__substing">Отделка</p>
+                <div>
+                    <select name="up_tp" class="selectric">
+                        {% for item in view.get_up_tp %}
+                              <option class="search-options__title selectric__item" value="{{ item.id }}">
+                                    {{ item.up }} м&sup2; &nbsp;—&nbsp; {{ item.to }} м&sup2;
+                                </option>
                         {% endfor %}
                     </select>
                 </div>
