@@ -7,13 +7,15 @@
         <div class="information-block">
             <div class="information-block__top">
                 <div class="information-block__flat">{{ item.number_of_rooms }}-комн. {{ item.housing_type }}</div>
-                <div class='area'><span class="square">м<span>2</span></span></div>
-                <div>5/5 эт</div>
+                <div class='area'>{{ item.apartment_area }}<span class="square">м<span>2</span></span></div>
+                <div>{{ item.apartment_floor }}/{{ item.house_floor }} эт</div>
             </div>
             <div class="substring">{{ item.district }}</div>
             <div class="street-name">{{ item.address }}</div>
-            <div class="substring">{{ item.price_sm }} &#8381; / <span class="square">м<span>2</span></span>
-            </div>
+            <div class="substring">{% if item.price_sm %}
+                {{ item.price_sm }} &#8381; / <span class="square">м<span>2</span></span>
+            {% endif %}
+                </div>
             <div class="price">{{ item.price }} &#8381;</div>
             <div class="phone-number">
                 <div class="phone-number__block">

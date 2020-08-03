@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>Ключ | Агенство недвижимости</title>
+    <title>Ключ | Центр Недвижимости "Ключ"</title>
 </head>
 <body>
 <header>
@@ -187,7 +187,7 @@
                         </div>
                         <div class="substring">{{ item.district }}</div>
                         <div class="street-name">{{ item.address }}</div>
-                        <div class="substring">{{ item.price_sm }} &#8381; / <span class="square">м<span>2</span></span>
+                        <div class="substring">{% if item.price_sm %}{{ item.price_sm }} &#8381; / <span class="square">м<span>2</span></span>{% endif %}
                         </div>
                         <div class="price">{{ item.price }} &#8381; {#<span class='old-price'>1 200 000 &#8381;</span>#}
                         </div>
@@ -336,27 +336,7 @@
 
     </div>
 </div>
-<footer>
-    <div class="wrap">
-        <div class="footer footer_margin">
-            <div class="footer__img">
-                <img src="{% static 'img/svg/logo2.svg' %}" alt="logo">
-            </div>
-            <div class="footer__adress">
-                <p>г. Норильск, ул. Пушкина, д. 52</p>
-                <a href="tel:+73919020202">+7 (3919) 02-02-02</a>
-            </div>
-            <div class="footer__root">
-                <p>Политика конфиденциальности</p>
-                <p>Условия обработки персональных данных</p>
-            </div>
-            <div class="footer__made-in">
-                Сделано
-                <img src="{% static 'img/svg/copyright.svg' %}" alt="logo">
-            </div>
-        </div>
-    </div>
-</footer>
+{% include 'ads/inc/_footer.html' %}
 <script src="{% static 'js/libs.min.js' %}"></script>
 <script src="{% static 'js/script.js' %}"></script>
 <script src="{% static 'js/scroll.js' %}"></script>

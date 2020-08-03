@@ -56,14 +56,14 @@ class HousingType(models.Model):
 
 
 class ProperType(models.Model):
-    name = models.CharField('Тип недвижимости', max_length=255, unique=True)
+    name = models.CharField('Каталог недвижимости', max_length=255, unique=True)
 
     def __str__(self):
         return self.name
 
     class Meta:
-        verbose_name = 'Тип недвижимости'
-        verbose_name_plural = 'Тип недвижимости'
+        verbose_name = 'Каталог недвижимости'
+        verbose_name_plural = 'Каталог недвижимости'
 
 
 class Finishing(models.Model):
@@ -265,14 +265,14 @@ class Ads(models.Model):
     )
     proper_type = models.ForeignKey(
         'ProperType',
-        verbose_name='Тип недвижимости',
+        verbose_name='Каталог недвижимости',
         on_delete=models.CASCADE,
     )
     number_of_rooms = models.IntegerField(
         'Количество комнат',
         default=1
     )
-    apartment_area = models.IntegerField(
+    apartment_area = models.FloatField(
         'Общая площадь',
         help_text='Укажите без знака квадрата.'
     )
@@ -296,6 +296,8 @@ class Ads(models.Model):
         'Finishing',
         verbose_name='Отделка',
         on_delete=models.CASCADE,
+        blank=True,
+        null=True,
     )
     height_of_ceilings = models.DecimalField(
         'Высота потолков',
@@ -322,16 +324,22 @@ class Ads(models.Model):
         'SunnySide',
         on_delete=models.CASCADE,
         verbose_name='Солнечная сторона',
+        blank=True,
+        null=True,
     )
     view_from_windows = models.ForeignKey(
         'ViewFromWindows',
         on_delete=models.CASCADE,
         verbose_name='Вид из окон',
+        blank=True,
+        null=True,
     )
     door = models.ForeignKey(
         'Door',
         on_delete=models.CASCADE,
         verbose_name='Дверь',
+        blank=True,
+        null=True,
     )
     window_material = models.ForeignKey(
         'WindowMaterial',
@@ -341,28 +349,37 @@ class Ads(models.Model):
     connected_services = models.ManyToManyField(
         'ConnectedServices',
         verbose_name='Подлкюченные сервисы',
+        blank=True,
     )
     yard = models.ForeignKey(
         'Yard',
         on_delete=models.CASCADE,
         verbose_name='Двор',
+        blank=True,
+        null=True,
     )
     parking = models.ForeignKey(
         'Parking',
         on_delete=models.CASCADE,
-        verbose_name='Паркинг'
+        verbose_name='Паркинг',
+        blank=True,
+        null=True,
     )
     series = models.ForeignKey(
         'Series',
         on_delete=models.CASCADE,
         verbose_name='Серия',
         default='1',
+        blank=True,
+        null=True,
     )
     year_construction = models.ForeignKey(
         'YearConstruction',
         on_delete=models.CASCADE,
         verbose_name='Год постройки',
         default="2020",
+        blank=True,
+        null=True,
     )
     walls = models.ForeignKey(
         'Walls',
@@ -373,17 +390,21 @@ class Ads(models.Model):
         'Elevator',
         on_delete=models.CASCADE,
         verbose_name='Лифт',
+        blank=True,
+        null=True,
     )
     house_number = models.ForeignKey(
         'HouseNumber',
         on_delete=models.CASCADE,
         verbose_name='Номер дома',
     )
-    address = models.CharField('Адрес', max_length=255)
+    address = models.CharField('Улица', max_length=255)
     price_sm = models.DecimalField(
         'Цена за квадратный метр',
         max_digits=14,
         decimal_places=2,
+        blank=True,
+        null=True,
     )
     price = models.DecimalField(
         'Цена',
