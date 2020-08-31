@@ -1,3 +1,4 @@
+{% load filter_dict %}
 <form class="search" action="{% url 'filter' %}">
     <div class='search-options'>
         <div class="search-options__item">
@@ -6,7 +7,7 @@
                 <div>
                     <select name="deal_type" class="selectric">
                         {% for item in view.get_deal_types %}
-                            <option class="selectric__item" value="{{ item.id }}">{{ item.name }}</option>
+                            <option {% if request.GET|get_value_from_dict:"deal_type" == item.id|pprint %}selected{% endif %} class="selectric__item" value="{{ item.id }}">{{ item.name }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -18,7 +19,7 @@
                 <div>
                     <select name="housing_type" class="selectric">
                         {% for item in view.get_housing_type %}
-                            <option class="selectric__item" value="{{ item.id }}">{{ item.name }}</option>
+                            <option {% if request.GET|get_value_from_dict:"housing_type" == item.id|pprint %}selected{% endif %} class="selectric__item" value="{{ item.id }}">{{ item.name }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -30,7 +31,7 @@
                 <div>
                     <select name="proper_type" class="selectric">
                         {% for item in view.get_proper_type %}
-                            <option class="selectric__item" value="{{ item.id }}">{{ item.name }}</option>
+                            <option {% if request.GET|get_value_from_dict:"proper_type" == item.id|pprint %}selected{% endif %} class="selectric__item" value="{{ item.id }}">{{ item.name }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -42,7 +43,7 @@
                 <div>
                     <select name="finishing" class="selectric">
                         {% for item in view.get_finishing %}
-                            <option class="selectric__item" value="{{ item.id }}">{{ item.name }}</option>
+                            <option {% if request.GET|get_value_from_dict:"finishing" == item.id|pprint %}selected{% endif %} class="selectric__item" value="{{ item.id }}">{{ item.name }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -50,13 +51,13 @@
         </div>
         <div class="search-options__item">
             <div class="search-options__text">
-                <p class="search-options__substing">Квадратура</p>
+                <p class="search-options__substing">Площадь</p>
                 <div>
                     <select name="up_tp" class="selectric">
                         {% for item in view.get_up_tp %}
-                              <option class="search-options__title selectric__item" value="{{ item.id }}">
-                                    {{ item.up }} м&sup2; &nbsp;—&nbsp; {{ item.to }} м&sup2;
-                                </option>
+                            <option {% if request.GET|get_value_from_dict:"up_tp" == item.id|pprint %}selected{% endif %} class="search-options__title selectric__item" value="{{ item.id }}">
+                                {{ item.up }} м&sup2; &nbsp;—&nbsp; {{ item.to }} м&sup2;
+                            </option>
                         {% endfor %}
                     </select>
                 </div>
@@ -65,4 +66,3 @@
         <input type="submit" class="search-options__btn" value="Поиск">
     </div>
 </form>
-

@@ -1,5 +1,7 @@
+import urllib
+
 from django.http import HttpResponse
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views.generic import ListView, DetailView
 from django.views.generic.base import View
@@ -53,7 +55,7 @@ class FiltersAdsView(Filters, ListView):
             proper_type__in=self.request.GET.getlist('proper_type'),
             finishing__in=self.request.GET.getlist('finishing'),
             area_range__in=self.request.GET.getlist('up_tp'),
-        )
+        ).distinct()
 
         return queryset
 
@@ -71,7 +73,12 @@ class FiltersAdsView(Filters, ListView):
              self.request.GET.getlist("proper_type")]
         )
         context["finishing"] = ''.join(
-            [f"finishing={x}&" for x in self.request.GET.getlist("finishing")]
+            [f"finishing={x}&" for x in
+             self.request.GET.getlist("finishing")]
+        )
+        context["up_tp"] = ''.join(
+            [f"up_tp={x}&" for x in
+             self.request.GET.getlist("up_tp")]
         )
 
         return context

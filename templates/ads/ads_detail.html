@@ -4,10 +4,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>Ключ | Центр Недвижимости "Ключ"</title>
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+    <link rel="shortcut icon" href="{% static 'img/svg/logo.svg' %}" type="image/x-icon">
+
+    <title>Ключ | Агенство недвижимости</title>
 </head>
 <body>
+<div class="window-wrap window-hidden">
+    <div class="window">
+        <div class="window__title">
+            Оставить заявку на размещение объявления
+        </div>
+        <form class="window__form">
+            <div class="form-line">
+                <fieldset class='request__fieldset '>
+                    <legend class='request__legend'>Имя</legend>
+                    <input type="text" placeholder="Введите имя" class="window__input">
+                </fieldset>
+                <fieldset class='request__fieldset window__phone'>
+                    <legend class='request__legend'>Номер телефона</legend>
+                    <input type="tel" class="window__input" placeholder="+7 (___) ___-__-__">
+                </fieldset>
+            </div>
+            <fieldset class='request__fieldset window__description'>
+                <legend class='request__legend'>Описание</legend>
+                <textarea type="text" name="window__description" class="window__input window__textarea"
+                          placeholder="Описание вашей квартиры"></textarea>
+            </fieldset>
+            <div class="form-line ds-window-line">
+                <button class="btn">Отправить заявку</button>
+
+                <div class="file">
+                    <label class="file__text" for="file__input">
+                        Прикрепить файл
+                    </label>
+                    <input type="file" name="file__input" id="file__input" class="file__input">
+                </div>
+
+            </div>
+            <div class="phone-window-line">
+                <div class="file">
+                    <label class="file__text" for="file__input">
+                        Прикрепить файл
+                    </label>
+                    <input type="file" name="file__input" id="file__input" class="file__input">
+                </div>
+                <button class="btn">Отправить заявку</button>
+            </div>
+
+        </form>
+    </div>
+    <div class="close">
+        <div class="close__line-1"></div>
+        <div class="close__line-2"></div>
+    </div>
+</div>
+
 <div class="offer-top">
     <div class="wrap">
         <div class="header-top">
@@ -23,81 +75,138 @@
             </div>
             <div class="header-top-right">
                 <p class="header-top-right__phone-number"><a href="tel:+73919020202">+7 (3919) 02-02-02</a></p>
+                <a class="header-top-right__button" href='#'>
+                    <div class="plus">+</div>
+                    <p class="text">Разместить объявление</p>
                 </a>
                 <div class="hamburger">
                     <div class="hamburger__line-one"></div>
                     <div class="hamburger__line-two"></div>
                     <div class="hamburger__line-three"></div>
                 </div>
+                <div class="aside-wrap aside-hidden">
+                    <div class="aside aside-visible">
+                        <div class="x-wrap">
+                            <div class="x">
+                                <div class="x__one"></div>
+                                <div class="x__two"></div>
+                            </div>
+                        </div>
+
+                        <div class="nav">
+                            <div class="nav__block">
+                                <a href="#" class="nav__text">Поиск</a>
+                                <a href="#" class="nav__text">Бесплатная консультация</a>
+                                <a href="#" class="nav__text">Ипотека</a>
+                            </div>
+                            <div class="nav__footer">
+                                <a class="header-top-right__button" href='#'>
+                                    <div class="plus">+</div>
+                                    <p class="text">Разместить объявление</p>
+                                </a>
+                                <a href="https://goo.gl/maps/AJF9NMqR86zwgecL7" class="address nav__link">г.
+                                    Норильск, ул. Пушкина, д. 52</a>
+                                <a href="tel:+73919020202" class="phone nav__link">+7 (3919) 02-02-02</a>
+                                <a href="#" class="root nav__link">Политика конфиденциальности</a>
+                                <a href="#" class="root nav__link">Условия обработки персональных данных</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="aside-wrap aside-hidden">
+                    <div class="aside aside-visible">
+                        <div class="x-wrap">
+                            <div class="x">
+                                <div class="x__one"></div>
+                                <div class="x__two"></div>
+                            </div>
+                        </div>
+
+                        <div class="nav">
+                            <div class="nav__block">
+                                <a href="#" class="nav__text">Поиск</a>
+                                <a href="#" class="nav__text">Бесплатная консультация</a>
+                                <a href="#" class="nav__text">Ипотека</a>
+                            </div>
+                            <div class="nav__footer">
+                                <a class="header-top-right__button" href='#'>
+                                    <div class="plus">+</div>
+                                    <p class="text">Разместить объявление</p>
+                                </a>
+                                <a href="https://goo.gl/maps/AJF9NMqR86zwgecL7" class="address nav__link">г. Норильск,
+                                    ул. Пушкина, д. 52</a>
+                                <a href="tel:+73919020202" class="phone nav__link">+7 (3919) 02-02-02</a>
+                                <a href="#" class="root nav__link">Политика конфиденциальности</a>
+                                <a href="#" class="root nav__link">Условия обработки персональных данных</a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-{#<div class="link">#}
-{#    <div class="wrap">#}
+
+<div class="link">
+    <div class="wrap ">
 {#        <a href="index.html">Главная ›</a>#}
 {#        <a href="#">Двухкомнатные квартиры ›</a>#}
 {#        <a href="#">ул. Лауреатов, д. 43 </a>#}
-{#    </div>#}
-{#</div>#}
+    </div>
+</div>
 
-<div class="content-wrap" style="margin-top: 50px;">
+<div class="content-wrap">
     <div class="wrap">
         <div class="content">
             <div class="content__block">
-                <img src="{{ ads.apartmentshots_set.first.image.url }}" id="main">
-                <div id="thumbnails">
-                    {% for slide in ads.apartmentshots_set.all %}
-                        <img src="{{ slide.image.url }}">
+
+                <div class="fotorama" data-nav="thumbs" data-max-width="100%" data-allowfullscreen="true">
+                    {% for image in ads.apartment_shots.all %}
+                        <img src="{{ image.image.url }}">
                     {% endfor %}
                 </div>
+
                 <div class="text-content">
                     <div class="information">
                         <div class="information__top">
                             <div class="information__left">
-                                <div class="information__flat">{{ ads.number_of_rooms }}-комн.
-                                    {% if ads.proper_type|stringformat:"s"|lower == 'гараж' %}
-                                        {{ ads.proper_type|lower }}{% else %}
-                                        {{ ads.housing_type|lower }}{% endif %}</div>
-                                <div class='area'>{{ ads.apartment_area }} <span class="square">м<span>2</span></span>
-                                </div>
+                                <div class="information__flat">{{ ads.number_of_rooms }}-комн. {{ ads.housing_type|lower }}</div>
+                                <div class='area'>{{ ads.apartment_area }}<span class="square">м<span>2</span></span></div>
                                 <div>{{ ads.apartment_floor }}/{{ ads.house_floor }} эт</div>
                             </div>
-                            <div class="information__right">
+                            <div class="information__right information__right_ds">
                                 <p class="price">{{ ads.price }} <img src="{% static 'img/svg/rub.svg' %}" alt=""></p>
-                                <div class='area'>{% if ads.price_sm %}
-                                    {{ ads.price_sm }} &#8381; / <span
-                                            class="square">м<span>2</span></span>
-                                {% endif %}</div>
+                                {% if ads.price_sm %}<div class='area'>{{ ads.price_sm }} &#8381; / <span class="square">м<span>2</span></span></div>{% endif %}
                             </div>
                         </div>
-                        <div class="information__street">
-                            {{ ads.address }}
-                            {#                            <a href="#">Показать на карте</a>#}
+
+                        <div class="information__right information__right_tablet">
+                            <p class="price">1 000 000 <img src="{% static 'img/svg/rub.svg' %}" alt=""></p>
+                            <div class='area'>27 094 &#8381; / <span class="square">м<span>2</span></span></div>
                         </div>
-                    </div>
-                    <div class="content-buttons">
-                        {#                        <div class="btn-content">#}
-                        {#                            <div class="btn-content__img">#}
-                        {#                                <img src="{% static 'img/svg/heart.svg' %}" alt="hurt">#}
-                        {#                            </div>#}
-                        {#                            <div class="btn-content__text">#}
-                        {#                                Добавить в избранное#}
-                        {#                            </div>#}
-                        {#                        </div>#}
-                        {#                        <div class="btn btn-new-style">#}
-                        {#                            Купить в ипотеку#}
-                        {#                        </div>#}
-                        {#                        <div class="btn-link">#}
-                        {#                            <img src="{% static 'img/svg/link.svg' %}" alt="link">#}
-                        {#                        </div>#}
                     </div>
                     <div class="description">
                         <div class="description__title">Описание</div>
                         <div class="description__text">
                             <p>
-                                {{ ads.description }}
+                                Квартира находится на первом этаже девятиэтажного дома, улучшенной планировки. Окна
+                                деревянные в
+                                хорошем состоянии.На стенах комнат-обои,на стенах кухни обои и "фартук"из кафельной
+                                плитки. В
+                                туалете стены выложены кафельной плиткой,в ванной комнате кафельной плиткой и моющей
+                                пленкой.Сантехника в рабочем состоянии.Входная дверь заменена. Имеется балкон(
+                                застеклен).Во
+                                дворе дома построена детская площадка.
                             </p>
+                            <p>
+                                Дом находится в р-не с развитой инфраструктурой.В шаговой доступности от него: Средняя
+                                общеобразовательная школа №17,Гимназия №7,детский сад- "Белочка" №4,"Норильчонок",
+                                детский сад
+                                №5,детская и взрослая поликлиники,мед.училище, автобусная остановка.
+                            </p>
+
                         </div>
                     </div>
                     {% if not ads.proper_type|stringformat:"s"|lower == "гараж" %}
@@ -239,7 +348,7 @@
                     </div>
                 </div>
                 {% if success_detail in request.session %}
-                    <div class="text-title" style="color: #0dd528; font-size: 20px; text-align: center">Ваша заявка
+                    <div class="text-title" style="color: #0069c9; font-size: 20px; text-align: center">Ваша заявка
                         принята
                     </div>
                 {% else %}
@@ -262,10 +371,95 @@
                         aria-hidden="false" tabindex="0"></iframe>
             </div>
         </div>
+
     </div>
 </div>
-{% include 'ads/inc/_footer.html' %}
-<script src="{% static 'js/script.js' %}"></script>
-<script src="{% static 'js/slider.js' %}"></script>
+<footer>
+    <div class="wrap">
+        <div class="footer footer_margin">
+            <div class="footer__img">
+                <img src="{% static 'img/svg/logo2.svg' %}" alt="logo">
+            </div>
+            <div class="footer__adress">
+                <p>Офис компании: <br>
+                    г. Норильск, Ленинский проспект, д. 31, офис 3
+                </p>
+                <p> Тел.:
+                    <a href="tel:+73919426155">+7(3919) 42-61-55</a>,
+                    <a href="tel:+73919493773">+7(3919) 49-37-73</a>
+
+                </p>
+                <p> e-mail:
+                    <a href="mailto:kluch-norilsk@mail.ru">kluch-norilsk@mail.ru</a>
+                </p>
+            </div>
+            <div>
+                <p>
+                    Руководитель: <br> Давыденко Виктор Васильевич, <br> <a href="tel:+79135043773">+7(913)
+                    504-37-73</a>
+                </p>
+            </div>
+            <div>
+                <p>
+                    Режим работы: <br>
+                    будние дни - с 11:00 до 19:00 <br>
+                    сб. - с 12:00 до 16:00
+                </p>
+            </div>
+            <div class="footer__root">
+                <p>Политика конфиденциальности</p>
+                <p>Условия обработки персональных данных</p>
+            </div>
+            <div class="footer__made-in">
+                Сделано
+                <img src="{% static 'img/svg/copyright.svg' %}" alt="logo">
+            </div>
+        </div>
+        <div class="footer-tablet">
+            <div class="footer__adress">
+                <p>г. Норильск, ул. Пушкина, д. 52</p>
+                <p> Тел.:
+                    <a href="tel:+73919020202">+7 (3919) 02-02-02</a>
+                </p>
+            </div>
+            <div>
+                <div class="footer__img">
+                    <img src="{% static 'img/svg/logo2.svg' %}" alt="logo">
+                </div>
+                <div class="footer__made-in">
+                    Сделано
+                    <img src="{% static 'img/svg/copyright.svg' %}" alt="logo">
+                </div>
+            </div>
+            <div class="footer__root">
+                <p>Политика конфиденциальности</p>
+                <p>Условия обработки персональных данных</p>
+            </div>
+
+        </div>
+        <div class="footer__phone">
+            <div class="footer__img">
+                <img src="{% static 'img/svg/logo2.svg' %}" alt="logo">
+            </div>
+            <div class="footer__adress">
+                <p>г. Норильск, ул. Пушкина, д. 52</p>
+                <p> Тел.:
+                    <a href="tel:+73919020202">+7 (3919) 02-02-02</a>
+                </p>
+            </div>
+            <div class="footer__root">
+                <p>Политика конфиденциальности</p>
+                <p>Условия обработки персональных данных</p>
+            </div>
+            <div class="footer__made-in">
+                Сделано
+                <img src="{% static 'img/svg/copyright.svg' %}" alt="logo">
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="{% static 'js/libs.min.js' %}"></script>
+<script src="{% static 'js/script.min.js' %}"></script>
+<script src="{% static 'js/fotorama.js' %}"></script>
 </body>
 </html>

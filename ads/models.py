@@ -56,7 +56,8 @@ class HousingType(models.Model):
 
 
 class ProperType(models.Model):
-    name = models.CharField('Каталог недвижимости', max_length=255, unique=True)
+    name = models.CharField('Каталог недвижимости', max_length=255,
+                            unique=True)
 
     def __str__(self):
         return self.name
@@ -296,8 +297,6 @@ class Ads(models.Model):
         'Finishing',
         verbose_name='Отделка',
         on_delete=models.CASCADE,
-        blank=True,
-        null=True,
     )
     height_of_ceilings = models.DecimalField(
         'Высота потолков',
@@ -398,7 +397,7 @@ class Ads(models.Model):
         on_delete=models.CASCADE,
         verbose_name='Номер дома',
     )
-    address = models.CharField('Улица', max_length=255)
+    address = models.CharField('Адрес', max_length=255)
     price_sm = models.DecimalField(
         'Цена за квадратный метр',
         max_digits=14,
@@ -438,7 +437,8 @@ class ApartmentShots(models.Model):
     ads = models.ForeignKey(
         'Ads',
         verbose_name="Объявление",
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name='apartment_shots',
     )
 
     class Meta:
